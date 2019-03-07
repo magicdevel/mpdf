@@ -891,7 +891,7 @@ class TTFontFile
 		} else {
 			$usWeightClass = 400;
 		}
-		$this->stemV = 50 + (int) (($usWeightClass / 65.0) ** 2);
+		$this->stemV = 50 + (int) pow(($usWeightClass / 65.0), 2);
 
 		// FONT DESCRIPTOR METRICS
 		if ($this->fontDescriptor === 'winTypo') {
