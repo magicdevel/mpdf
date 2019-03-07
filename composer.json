@@ -1,6 +1,6 @@
 {
 
-	"name": "magicdevel/mpdf",
+	"name": "mpdf/mpdf",
 	"type": "library",
 
 	"description": "PHP library generating PDF files from UTF-8 encoded HTML",
