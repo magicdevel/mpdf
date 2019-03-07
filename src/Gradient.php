@@ -401,10 +401,10 @@ class Gradient
 				}
 				// ELLIPSE
 				if ($shape === 'ellipse') {
-					$corner1 = sqrt(($coords[0] ** 2) + ($coords[1] ** 2));
-					$corner2 = sqrt(($coords[0] ** 2) + ((1 - $coords[1]) ** 2));
-					$corner3 = sqrt(((1 - $coords[0]) ** 2) + ($coords[1] ** 2));
-					$corner4 = sqrt(((1 - $coords[0]) ** 2) + ((1 - $coords[1]) ** 2));
+					$corner1 = sqrt(pow($coords[0], 2) + pow($coords[1], 2));
+					$corner2 = sqrt(pow($coords[0], 2) + pow((1 - $coords[1]), 2));
+					$corner3 = sqrt(pow((1 - $coords[0]), 2) + pow($coords[1], 2));
+					$corner4 = sqrt(pow((1 - $coords[0]), 2) + pow((1 - $coords[1]),2));
 					if ($size === 'closest-side') {
 						$radius = min($coords[0], $coords[1], 1 - $coords[0], 1 - $coords[1]);
 					} elseif ($size === 'closest-corner') {
@@ -417,10 +417,10 @@ class Gradient
 				} elseif ($shape === 'circle') {
 					if ($w >= $h) {
 						$coords[1] = $coords[3] = ($coords[1] * $h / $w);
-						$corner1 = sqrt(($coords[0] ** 2) + ($coords[1] ** 2));
-						$corner2 = sqrt(($coords[0] ** 2) + ((($h / $w) - $coords[1]) ** 2));
-						$corner3 = sqrt(((1 - $coords[0]) ** 2) + ($coords[1] ** 2));
-						$corner4 = sqrt(((1 - $coords[0]) ** 2) + ((($h / $w) - $coords[1]) ** 2));
+						$corner1 = sqrt(pow($coords[0], 2) + pow($coords[1], 2));
+						$corner2 = sqrt(pow($coords[0], 2) + pow((($h / $w) - $coords[1]), 2));
+						$corner3 = sqrt(pow((1 - $coords[0]), 2) + pow($coords[1], 2));
+						$corner4 = sqrt(pow((1 - $coords[0]), 2) + pow((($h / $w) - $coords[1]), 2));
 						if ($size === 'closest-side') {
 							$radius = min($coords[0], $coords[1], 1 - $coords[0], ($h / $w) - $coords[1]);
 						} elseif ($size === 'closest-corner') {
@@ -434,10 +434,10 @@ class Gradient
 						$usey -= ($w - $h);
 					} else {
 						$coords[0] = $coords[2] = ($coords[0] * $w / $h);
-						$corner1 = sqrt(($coords[0] ** 2) + ($coords[1] ** 2));
-						$corner2 = sqrt(($coords[0] ** 2) + ((1 - $coords[1]) ** 2));
-						$corner3 = sqrt(((($w / $h) - $coords[0]) ** 2) + ($coords[1] ** 2));
-						$corner4 = sqrt(((($w / $h) - $coords[0]) ** 2) + ((1 - $coords[1]) ** 2));
+						$corner1 = sqrt(pow($coords[0], 2) + pow($coords[1], 2));
+						$corner2 = sqrt(pow($coords[0], 2) + pow((1 - $coords[1]), 2));
+						$corner3 = sqrt(pow((($w / $h) - $coords[0]), 2) + pow($coords[1], 2));
+						$corner4 = sqrt(pow((($w / $h) - $coords[0]), 2) + pow((1 - $coords[1]), 2));
 						if ($size === 'closest-side') {
 							$radius = min($coords[0], $coords[1], ($w / $h) - $coords[0], 1 - $coords[1]);
 						} elseif ($size === 'closest-corner') {
@@ -486,7 +486,7 @@ class Gradient
 		if ($type == self::TYPE_LINEAR) {
 			$axisx = ($coords[2] - $coords[0]) * $usew;
 			$axisy = ($coords[3] - $coords[1]) * $useh;
-			$axis_length = sqrt(($axisx ** 2) + ($axisy ** 2));
+			$axis_length = sqrt(pow($axisx, 2) + pow($axisy, 2));
 		} else {
 			$axis_length = $coords[4] * $usew;
 		} // Absolute lengths are meaningless for an ellipse - Firefox uses Width as reference
